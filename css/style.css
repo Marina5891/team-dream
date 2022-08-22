@@ -54,6 +54,7 @@ font-family: 'Roboto-Regular', sans-serif;
 body {
   background-color: #fff;
   width: 100%;
+  position: relative;
 }
 
 a {
@@ -94,11 +95,20 @@ ul {
 
 /* Header */
 
-.menu {
+.header {
+  padding-top: 207px;
+}
+
+.menu__desktop .menu {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 207px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
 }
 
 .menu__mobile {
@@ -106,6 +116,9 @@ ul {
 }
 
 .menu__item a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 43px;
   font-family: "Roboto-Regular", sans-serif;
   font-size: 13px;
@@ -113,9 +126,10 @@ ul {
   font-weight: 400;
   letter-spacing: 0.04em;
   color: #989696;
+  height: 54px;
 }
 
-.menu__item.active a {
+.active a {
   color: #010101;
 }
 
@@ -539,11 +553,6 @@ input[type='number'] {
 
 @media screen and (max-width: 769px) {
 
-  .container {
-    width: calc(100% - 16px);
-    padding: 0;
-  }
-
   .about__inner {
     grid-template-columns: max-content;
     gap: 30px;
@@ -585,59 +594,111 @@ input[type='number'] {
 }
 
 @media screen and (max-width: 540px) {
-  .menu-desktop {
+  .header {
+    padding-top: 0;
+  }
+
+  .menu__desktop {
     display: none;
   }
 
-  .menu__mobile>a>img {
-    margin-left: -8px;
+  .menu__mobile {
     display: block;
+    margin-bottom: 100px;
   }
 
-  .menu__mobile {
+  .menu__inner {
+    width: 100%;
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 54px;
-    margin-bottom: 100px;
+    position: static;
+    top: 0;
+  }
+
+  .menu__inner>a>img {
+    margin-left: -16px;
+    display: block;
   }
 
   .menu {
     display: none;
   }
 
-  .menu__burger {
-    width: 30px;
-    height: 3px;
-    background-color: #000000;
-    position: relative;
-    margin-right: 8px;
+  li.menu__item {
+    margin: 10px 0;
   }
 
-  .menu__burger::before {
-    content: '';
-    width: 30px;
-    height: 3px;
-    background-color: #000000;
+  .menu__item a {
+    margin-right: 0;
+    height: 20px;
+  }
+
+  .menu__burger {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    font-size: 0;
+  }
+
+  .menu__burger span {
+    display: block;
     position: absolute;
+    width: 30px;
+    height: 4px;
+    top: 18px;
+    left: 5px;
+    right: 5px;
+    background-color: #000000;
+    transition: background 0s 0.3s;
+  }
+
+  .menu__burger span::before,
+  .menu__burger span::after {
+    content: '';
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    display: block;
+    background-color: #000;
+    transition-duration: 0.3s, 0.3s;
+    transition-delay: 0.3s, 0.3s;
+  }
+
+  .menu__burger span::before {
     bottom: 10px;
   }
 
-  .menu__burger::after {
-    content: '';
-    width: 30px;
-    height: 3px;
-    background-color: #000000;
-    position: absolute;
+  .menu__burger span::after {
     top: 10px;
   }
-}
 
+  .menu__burger.close span {
+    background: none;
+  }
+
+  .menu__burger.close span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+  }
+
+  .menu__burger.close span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .header__title {
+    margin-bottom: 15px;
+  }
+}
 
 @media screen and (max-width: 376px) {
 
   .header__title {
-    margin-bottom: 15px;
     font-size: 40px;
   }
 
