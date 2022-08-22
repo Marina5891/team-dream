@@ -694,6 +694,24 @@ input[type='number'] {
   .header__title {
     margin-bottom: 15px;
   }
+
+  /*   .contact__icon-box {
+    justify-content: space-between;
+  } */
+
+  .contact__item {
+    width: calc(100%/3 - 5px*2/3);
+    margin-right: 5px;
+  }
+
+  .contact__item:last-child {
+    margin-right: 0;
+  }
+
+  .contact__text a {
+    font-size: 10px;
+    word-wrap: break-word;
+  }
 }
 
 @media screen and (max-width: 376px) {
